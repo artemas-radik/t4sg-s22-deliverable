@@ -34,16 +34,15 @@ const CaseCard: React.FC<CaseCardProps> = (props) => {
 
   return (
     <Container>
-      <div style={{ width: "100%", padding: "5px" }}>
+      <div style={{ width: "100%", padding: "0px" }}>
         <Card body style={{ backgroundColor: "#e4ebf5" }}>
           <Box
             display="flex"
-            justifyContent="center"
-            alignItems="center"
+            justifyContent="left"
+            alignItems="left"
             width="100%"
           >
             <CardTitle tag="h3">{caseData.name}</CardTitle>
-            <CloseIcon />
           </Box>
 
           <CardSubtitle tag="h6" className="mb-2 text-muted">

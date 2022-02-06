@@ -43,16 +43,16 @@ const CaseCategory = (props: CaseCategoryProps) => {
 
   return (
     <Container
-      style={{ width: "100%", borderStyle: "solid", padding: "0.75rem" }}
+      style={{ width: "60%", borderStyle: "none", padding: "0.75rem" }}
     >
       <Row>
         <Col>
           {category ? (
-            <h3 className="font-weight-normal t4sg-color text-center">
+            <h3 className="font-weight-normal t4sg-color text-left">
               {category.name}
             </h3>
           ) : (
-            <h3 className="font-weight-normal t4sg-color text-center">
+            <h3 className="font-weight-normal t4sg-color text-left">
               Something went wrong
             </h3>
           )}

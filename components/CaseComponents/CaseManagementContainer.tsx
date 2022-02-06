@@ -10,6 +10,7 @@ import { useQuery } from "urql";
 import AddCategoryModal from "./Modals/AddCategoryModal";
 import AddTagModal from "./Modals/AddTagModal";
 import DeleteCaseModal from "./Modals/DeleteCaseModal";
+import DeleteCategoryModal from "./Modals/DeleteCategoryModal";
 
 /* 
   FEATURE 1 TODO:
@@ -42,6 +43,8 @@ const CaseManagementContainer: React.FC = (props) => {
     React.useState<boolean>(false);
     const [deleteCaseModalOpen, setDeleteCaseModalOpen] =
     React.useState<boolean>(false);
+    const [deleteCategoryModalOpen, setDeleteCategoryModalOpen] =
+    React.useState<boolean>(false);
   const [addTagModalOpen, setAddTagModalOpen] = React.useState<boolean>(false);
 
   /* NOTE: This uses */
@@ -52,6 +55,31 @@ const CaseManagementContainer: React.FC = (props) => {
   return (
     <>
       <h5 className="title">Home Page</h5>
+      <Container
+        style={{
+          width: "100%",
+          borderStyle: "none",
+          padding: "0.75rem",
+          marginTop: "0.75rem",
+          textAlign: "center",
+        }}
+      >
+        <Button variant="dark" onClick={() => setAddCategoryModalOpen(true)}>
+          Add Category
+        </Button>
+        {/* <Button variant="dark" onClick={() => setAddTagModalOpen(true)}>
+          Add Tag To A Case
+        </Button> */}
+        <Button variant="dark" onClick={() => setAddCaseModalOpen(true)}>
+          Add Case
+        </Button>
+        <Button variant="dark" onClick={() => setDeleteCaseModalOpen(true)}>
+          Delete Case
+        </Button>
+        <Button variant="dark" onClick={() => setDeleteCategoryModalOpen(true)}>
+          Delete Category
+        </Button>
+      </Container>
       <Grid container spacing={3}>
         {/*
           FEATURE 1 TODO:
@@ -82,35 +110,15 @@ const CaseManagementContainer: React.FC = (props) => {
         open={addCategoryModalOpen}
       />
 
+      <DeleteCategoryModal
+        onClose={() => setDeleteCategoryModalOpen(false)}
+        open={deleteCategoryModalOpen}
+      />
+
       <AddTagModal
         onClose={() => setAddTagModalOpen(false)}
         open={addTagModalOpen}
       />
-
-      <Container
-        style={{
-          width: "100%",
-          borderStyle: "solid",
-          padding: "0.75rem",
-          marginTop: "0.75rem",
-        }}
-      >
-        <Button variant="dark" onClick={() => setAddCategoryModalOpen(true)}>
-          Add Category
-        </Button>
-        <Button variant="dark" onClick={() => setAddTagModalOpen(true)}>
-          Add Tag To A Case
-        </Button>
-        <Button variant="dark" onClick={() => setAddCaseModalOpen(true)}>
-          Add Case
-        </Button>
-        <Button variant="dark" onClick={() => setDeleteCaseModalOpen(true)}>
-          Delete Case
-        </Button>
-        <Button variant="dark" onClick={() => "redirect"}>
-          Edit Case
-        </Button>
-      </Container>
     </>
   );
 };
