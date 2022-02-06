@@ -45,7 +45,7 @@ type AddCaseModalProps = {
   Make sure to replace the string that is currently
   in this variable 
 */
-const DeleteCaseMutation = `
+export const DeleteCaseMutation = `
 mutation DeleteCaseMutation($id: bigint = 0) {
   delete_cases_by_pk(id: $id) {
     id

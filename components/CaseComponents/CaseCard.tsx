@@ -7,10 +7,12 @@ import {
   CardTitle,
   CardSubtitle,
   CardText,
+  Button,
 } from "reactstrap";
-import { useQuery } from "urql";
+import { useMutation, useQuery } from "urql";
 import { Box } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
+import { DeleteCaseMutation } from "./Modals/DeleteCaseModal";
 
 type CaseCardProps = {
   data: CaseData;
@@ -31,6 +33,7 @@ export type CaseData = {
 
 const CaseCard: React.FC<CaseCardProps> = (props) => {
   const caseData = props.data;
+  const [result, executeMutation] = useMutation(DeleteCaseMutation);
 
   return (
     <Container>
@@ -49,6 +52,16 @@ const CaseCard: React.FC<CaseCardProps> = (props) => {
             {caseData.status}
           </CardSubtitle>
           <CardText>{caseData.description}</CardText>
+          <Button
+          variant="outlined"
+          onClick={() => {
+            executeMutation({
+              id: caseData.id,
+            });
+          }}
+        >
+          Delete
+        </Button>
           {/*
             ALTERNATE FEATURE 1 TODO:
             Use the data on tags found in props to render out all
