@@ -9,6 +9,7 @@ import AddCaseModal from "./Modals/AddCaseModal";
 import { useQuery } from "urql";
 import AddCategoryModal from "./Modals/AddCategoryModal";
 import AddTagModal from "./Modals/AddTagModal";
+import DeleteCaseModal from "./Modals/DeleteCaseModal";
 
 /* 
   FEATURE 1 TODO:
@@ -38,6 +39,8 @@ const CaseManagementContainer: React.FC = (props) => {
   const [addCaseModalOpen, setAddCaseModalOpen] =
     React.useState<boolean>(false);
   const [addCategoryModalOpen, setAddCategoryModalOpen] =
+    React.useState<boolean>(false);
+    const [deleteCaseModalOpen, setDeleteCaseModalOpen] =
     React.useState<boolean>(false);
   const [addTagModalOpen, setAddTagModalOpen] = React.useState<boolean>(false);
 
@@ -69,6 +72,11 @@ const CaseManagementContainer: React.FC = (props) => {
         open={addCaseModalOpen}
       />
 
+      <DeleteCaseModal
+        onClose={() => setDeleteCaseModalOpen(false)}
+        open={deleteCaseModalOpen}
+      />
+
       <AddCategoryModal
         onClose={() => setAddCategoryModalOpen(false)}
         open={addCategoryModalOpen}
@@ -96,7 +104,7 @@ const CaseManagementContainer: React.FC = (props) => {
         <Button variant="dark" onClick={() => setAddCaseModalOpen(true)}>
           Add Case
         </Button>
-        <Button variant="dark" onClick={() => "redirect"}>
+        <Button variant="dark" onClick={() => setDeleteCaseModalOpen(true)}>
           Delete Case
         </Button>
         <Button variant="dark" onClick={() => "redirect"}>
